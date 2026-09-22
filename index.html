@@ -299,6 +299,19 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
   .r{opacity:1;transform:none}
 }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/pt_BR/fbevents.js');
+fbq('init','1107457028532296');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></noscript>
+<!-- /Meta Pixel -->
 </head>
 <body>
 
@@ -559,8 +572,18 @@ var FIM_DA_OFERTA = "2026-09-28T23:59:59-03:00";
   "use strict";
 
   document.querySelectorAll("[data-checkout]").forEach(function(a){
-    var u = a.dataset.checkout === "combo" ? CHECKOUT_COMBO : CHECKOUT_KIT;
+    var combo = a.dataset.checkout === "combo";
+    var u = combo ? CHECKOUT_COMBO : CHECKOUT_KIT;
     if(u){ a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+    a.addEventListener("click", function(){
+      if(typeof fbq === "function"){
+        fbq("track", "InitiateCheckout", {
+          value: combo ? 37.90 : 19.90,
+          currency: "BRL",
+          content_name: combo ? "Combo Completo" : "Kit Leia em 10 Minutos"
+        });
+      }
+    });
   });
 
   var alvo = new Date(FIM_DA_OFERTA).getTime(),
