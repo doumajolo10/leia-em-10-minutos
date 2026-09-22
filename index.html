@@ -239,7 +239,8 @@ h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
 
 /* ============ preço ============ */
 .price{padding:98px 0}
-.price__grid{display:grid;grid-template-columns:1fr 1.06fr;gap:20px;margin-top:44px;align-items:start}
+.price__grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:44px;align-items:start;max-width:560px}
+.is-off{display:none!important}
 .plan{border:1px solid var(--line);border-radius:22px;padding:32px;background:var(--paper);position:relative}
 .plan--hot{background:var(--deep);color:var(--paper);border-color:transparent;
   box-shadow:0 34px 70px -40px rgba(18,49,42,.95)}
@@ -316,7 +317,7 @@ h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
   .bento__grid{grid-template-columns:repeat(2,1fr)}
   .bx--w3,.bx--w2{grid-column:span 1}.bx--w6{grid-column:span 2}
   .tst__grid{grid-template-columns:1fr}
-  .price__grid{grid-template-columns:1fr}
+  .price__grid{grid-template-columns:1fr;max-width:none}
   .step{grid-template-columns:56px 1fr;gap:18px;padding:26px;top:78px}
   .step__n{font-size:44px}
 }
@@ -526,8 +527,8 @@ h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
 <section class="price" id="planos">
   <div class="wrap">
     <div class="eyebrow r">Escolha o seu</div>
-    <h2 class="r" data-d="1" style="margin:18px 0 12px">Só o kit, ou o combo completo.</h2>
-    <p class="lead r" data-d="2">Os dois com acesso imediato e garantia de 7 dias.</p>
+    <h2 class="r" data-d="1" style="margin:18px 0 12px">Tudo isso por dez reais.</h2>
+    <p class="lead r" data-d="2">Acesso imediato e garantia de 7 dias.</p>
     <div class="price__grid">
       <div class="plan r">
         <h3>Kit Leia em 10 Minutos</h3>
@@ -543,7 +544,7 @@ h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
         <a href="#" class="btn" data-checkout="kit" data-mag>Quero só o kit por R$ 10</a>
         <div class="plan__foot">Pix ou cartão · recebe em até 1 minuto</div>
       </div>
-      <div class="plan plan--hot r" data-d="1">
+      <div class="plan plan--hot r is-off" data-d="1">
         <span class="plan__tag">⭐ Mais escolhido</span>
         <h3>Combo Completo</h3>
         <p class="plan__sub">Kit + 3 complementos para ler, escrever e brincar</p>
@@ -612,7 +613,7 @@ h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
 
 <script>
 /* ===== COLE AQUI OS LINKS DO CHECKOUT (Cakto) ===== */
-var CHECKOUT_KIT   = "";   // link do produto Leia em 10 Minutos (R$ 10)
+var CHECKOUT_KIT   = "https://pay.cakto.com.br/e2nadjy";   // link do produto Leia em 10 Minutos (R$ 10)
 var CHECKOUT_COMBO = "";   // link do Combo Completo (R$ 27). Vazio = usa o do kit.
 
 (function(){
