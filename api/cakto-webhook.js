@@ -113,9 +113,28 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, ignorado: payload.event });
   }
 
-  // O webhook V2 entrega data como lista (principal + bumps na mesma cobrança).
-  const pedidos = Array.isArray(payload.data) ? payload.data : [payload.data];
-  const eventos = pedidos.filter(Boolean).map(montarEvento);
+  // No modo Agrupado a Cakto entrega data como lista: o pedido principal e os
+  // order bumps da MESMA cobrança. Isso é uma venda só — mandar um Purchase por
+  // item faria a Meta contar 4 compras onde houve 1, e estragaria o custo por
+  // compra. Então somamos tudo num evento só, ancorado no pedido principal.
+  const pedidos = (Array.isArray(payload.data) ? payload.data : [payload.data]).filter(Boolean);
+  if (!pedidos.length) return res.status(200).json({ ok: true, aviso: 'sem pedidos' });
+
+  const principal = pedidos.find((p) => p.offer_type === 'main') || pedidos[0];
+  const total = pedidos.reduce((soma, p) => {
+    const v = typeof p.amount === 'number' ? p.amount : Number(p.baseAmount || 0);
+    return soma + (isFinite(v) ? v : 0);
+  }, 0);
+
+  const evento = montarEvento(principal);
+  evento.custom_data.value = Number(total.toFixed(2));
+  evento.custom_data.contents = pedidos.map((p) => ({
+    id: (p.product && p.product.id) || p.id,
+    quantity: 1,
+    item_price: typeof p.amount === 'number' ? p.amount : Number(p.baseAmount || 0),
+  }));
+  evento.custom_data.num_items = pedidos.length;
+  const eventos = [evento];
 
   const token = process.env.META_CAPI_TOKEN;
   if (!token) {
