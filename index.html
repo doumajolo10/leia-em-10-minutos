@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leia em 10 Minutos — Kit de leitura para imprimir</title>
+<meta name="description" content="50 páginas na ordem exata em que a criança aprende a ler. Imprime hoje, usa hoje. 10 minutos por dia, com plano de 30 dias. De R$ 47 por R$ 10.">
+<meta name="theme-color" content="#FAF6EE">
+<meta property="og:title" content="Seu filho lendo sozinho em 10 minutos por dia">
+<meta property="og:description" content="Kit de leitura para imprimir: 50 páginas na ordem certa, com plano de 30 dias. De R$ 47 por R$ 10.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#FAF6EE;
+  --paper-2:#F2EBDD;
+  --ink:#17130F;
+  --ink-soft:#4A413A;
+  --accent:#E2623B;
+  --accent-ink:#B8431F;
+  --deep:#12312A;
+  --deep-2:#0C231E;
+  --gold:#E9B44C;
+  --line:rgba(23,19,15,.14);
+  --radius:18px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-d:"Fraunces",Georgia,serif;
+  --font-b:"Inter",system-ui,-apple-system,sans-serif;
+  --font-m:"Space Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--font-b);font-size:17px;line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{position:relative}
+
+/* ============ grão ============ */
+.grain{position:fixed;inset:-120px;z-index:60;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;animation:grain 7s steps(8) infinite}
+@keyframes grain{
+  0%{transform:translate(0,0)}12.5%{transform:translate(-6%,3%)}25%{transform:translate(4%,-5%)}
+  37.5%{transform:translate(-3%,6%)}50%{transform:translate(5%,2%)}62.5%{transform:translate(-5%,-4%)}
+  75%{transform:translate(3%,5%)}87.5%{transform:translate(-4%,-2%)}100%{transform:translate(0,0)}}
+
+/* ============ preloader ============ */
+.pl{position:fixed;inset:0;z-index:100;background:var(--paper);display:grid;place-items:center;
+  animation:plOut .5s var(--ease) 1s forwards}
+.pl__n{font-family:var(--font-d);font-weight:900;font-size:clamp(78px,20vw,190px);line-height:.8;
+  letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.pl__t{font-family:var(--font-m);font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+  text-align:center;margin-top:12px;color:var(--ink-soft);opacity:0;animation:fadeIn .5s .25s forwards}
+@keyframes plOut{to{opacity:0;visibility:hidden}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ============ nav ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;
+  transition:background .4s var(--ease),border-color .4s,padding .4s var(--ease);
+  border-bottom:1px solid transparent}
+.nav.is-stuck{background:rgba(250,246,238,.88);backdrop-filter:blur(12px);border-bottom-color:var(--line);padding:9px 0}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--font-d);font-weight:700;font-size:17px;letter-spacing:-.02em}
+.brand__b{width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;display:grid;place-items:center;
+  font-family:var(--font-m);font-size:11px;font-weight:700;flex:none}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__price{font-family:var(--font-m);font-size:12px;color:var(--ink-soft)}
+.nav__price s{opacity:.55}
+
+/* ============ botões ============ */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--accent);color:#fff;border:0;border-radius:999px;
+  padding:16px 30px;font-weight:600;font-size:16px;letter-spacing:-.01em;cursor:pointer;
+  text-decoration:none;overflow:hidden;isolation:isolate;
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 10px 26px -12px rgba(184,67,31,.85);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent-ink);
+  transform:translateY(101%);transition:transform .45s var(--ease)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(184,67,31,.95)}
+.btn:active{transform:translateY(0)}
+.btn--sm{padding:11px 20px;font-size:14px}
+.btn--lg{padding:20px 38px;font-size:18px}
+.btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn--ghost::after{background:var(--ink)}
+.btn--ghost:hover{color:var(--paper)}
+.btn__ico{font-size:1.1em;transform:translateY(-1px)}
+
+/* ============ reveal ============ */
+.r{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.r.is-in{opacity:1;transform:none}
+.rl{display:block;overflow:hidden}
+.rl>span{display:block;transform:translateY(105%);transition:transform 1s var(--ease)}
+.is-in .rl>span,.rl.is-in>span{transform:none}
+[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}
+[data-d="3"]{transition-delay:.24s}[data-d="4"]{transition-delay:.32s}
+[data-d="5"]{transition-delay:.4s}[data-d="6"]{transition-delay:.48s}
+
+/* ============ tipografia ============ */
+.eyebrow{font-family:var(--font-m);font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.5;flex:none}
+h1,h2,h3{font-family:var(--font-d);font-weight:700;letter-spacing:-.035em;line-height:.98;margin:0}
+h1{font-size:clamp(38px,6.6vw,74px);line-height:.94;font-weight:900}
+h2{font-size:clamp(31px,5.2vw,58px)}
+h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.025em;line-height:1.15}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--ink-soft);line-height:1.62;max-width:56ch}
+.ink-accent{color:var(--accent)}
+.underline-hand{position:relative;white-space:nowrap}
+.underline-hand svg{position:absolute;left:0;right:0;bottom:-.12em;width:100%;height:.3em;overflow:visible}
+.underline-hand path{stroke:var(--accent);stroke-width:7;fill:none;stroke-linecap:round;
+  stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.1s .5s var(--ease)}
+.is-in .underline-hand path{stroke-dashoffset:0}
+
+/* ============ hero ============ */
+.hero{padding:120px 0 46px;position:relative;overflow:hidden}
+.hero__blob{position:absolute;width:62vw;height:62vw;max-width:720px;max-height:720px;
+  right:-16vw;top:-14vw;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 34% 34%,rgba(233,180,76,.5),rgba(226,98,59,.22) 46%,transparent 69%);
+  filter:blur(28px)}
+.hero__grid{display:grid;grid-template-columns:1.18fr .82fr;gap:44px;align-items:center;position:relative}
+.hero__tag{display:inline-flex;align-items:center;gap:8px;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px;font-family:var(--font-m);font-size:11.5px;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:22px;flex-wrap:wrap;line-height:1.4}
+.hero__tag b{color:var(--accent-ink);white-space:nowrap}
+.hero h1{margin-bottom:22px}
+.hero__cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
+.hero__meta{font-family:var(--font-m);font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.hero__meta s{opacity:.6}
+.hero__trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--ink-soft)}
+.hero__trust span{display:flex;align-items:center;gap:7px}
+.hero__art{position:relative}
+.hero__stack{position:relative;aspect-ratio:3/3.7;max-width:420px;margin-left:auto}
+.hero__stack img{position:absolute;border-radius:6px;box-shadow:0 26px 60px -26px rgba(23,19,15,.62),0 2px 8px rgba(23,19,15,.1);
+  border:1px solid rgba(23,19,15,.07);background:#fff}
+.hero__stack img:nth-child(1){width:70%;left:0;top:7%;transform:rotate(-7deg)}
+.hero__stack img:nth-child(2){width:70%;right:2%;top:0;transform:rotate(5.5deg)}
+.hero__stack img:nth-child(3){width:73%;left:13%;bottom:0;transform:rotate(-1.5deg);z-index:2}
+.hero__badge{position:absolute;z-index:3;right:-6px;bottom:15%;background:var(--deep);color:var(--paper);
+  border-radius:14px;padding:13px 17px;text-align:center;box-shadow:0 16px 34px -16px rgba(18,49,42,.8);
+  transform:rotate(-4deg)}
+.hero__badge b{display:block;font-family:var(--font-d);font-size:27px;line-height:1;font-weight:900}
+.hero__badge span{font-family:var(--font-m);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+
+/* ============ marquee ============ */
+.mq{background:var(--deep);color:var(--paper);padding:15px 0;overflow:hidden;
+  border-top:1px solid rgba(250,246,238,.1);border-bottom:1px solid rgba(250,246,238,.1)}
+.mq__t{display:flex;gap:34px;width:max-content;animation:mq 38s linear infinite;will-change:transform}
+.mq__t span{font-family:var(--font-m);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
+  display:flex;align-items:center;gap:34px;white-space:nowrap}
+.mq__t span::after{content:"◆";color:var(--gold);font-size:9px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ dor (escuro) ============ */
+.dark{background:var(--deep);color:var(--paper);padding:98px 0}
+.dark h2{color:var(--paper)}
+.dark .eyebrow{color:rgba(250,246,238,.62)}
+.pain{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:start}
+.pain__list{display:grid;gap:0;margin:0;padding:0;list-style:none;counter-reset:p}
+.pain__list li{counter-increment:p;padding:19px 0 19px 52px;position:relative;
+  border-top:1px solid rgba(250,246,238,.14);font-size:16.5px;line-height:1.5;color:rgba(250,246,238,.9)}
+.pain__list li:last-child{border-bottom:1px solid rgba(250,246,238,.14)}
+.pain__list li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:21px;
+  font-family:var(--font-m);font-size:11px;color:var(--gold);letter-spacing:.1em}
+.pain__punch{margin-top:34px;font-family:var(--font-d);font-size:clamp(21px,2.9vw,30px);line-height:1.28;
+  letter-spacing:-.025em;color:var(--paper)}
+.pain__punch b{color:var(--gold);font-weight:700}
+
+/* ============ etapas sticky ============ */
+.steps{padding:98px 0}
+.steps__head{margin-bottom:46px;max-width:660px}
+.step{position:sticky;top:96px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px;margin-bottom:22px;display:grid;grid-template-columns:78px 1fr;gap:26px;align-items:start;
+  box-shadow:0 22px 44px -34px rgba(23,19,15,.5)}
+.step:nth-child(1){z-index:1}.step:nth-child(2){z-index:2}
+.step:nth-child(3){z-index:3}.step:nth-child(4){z-index:4}
+.step__n{font-family:var(--font-d);font-size:60px;font-weight:900;line-height:.8;color:var(--accent);
+  letter-spacing:-.06em;opacity:.95}
+.step h3{margin-bottom:9px}
+.step p{margin:0;color:var(--ink-soft);font-size:16px;max-width:60ch}
+.step__tag{display:inline-block;margin-top:14px;font-family:var(--font-m);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-ink);background:rgba(226,98,59,.1);border-radius:999px;padding:5px 12px}
+
+/* ============ vitrine horizontal ============ */
+.gal{padding:84px 0 92px;background:var(--paper-2);overflow:hidden}
+.gal__head{margin-bottom:34px}
+.gal__track{display:flex;gap:20px;padding:0 20px 18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.gal__track::-webkit-scrollbar{height:5px}
+.gal__track::-webkit-scrollbar-thumb{background:rgba(23,19,15,.22);border-radius:9px}
+.card{flex:none;width:min(272px,68vw);scroll-snap-align:center}
+.card img{width:100%;border-radius:9px;border:1px solid rgba(23,19,15,.1);background:#fff;
+  box-shadow:0 20px 44px -26px rgba(23,19,15,.58);transition:transform .5s var(--ease)}
+.card:hover img{transform:translateY(-6px)}
+.card__c{display:flex;align-items:baseline;gap:9px;margin-top:13px}
+.card__n{font-family:var(--font-m);font-size:10.5px;color:var(--accent-ink);letter-spacing:.1em}
+.card__t{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.gal__hint{font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:18px;display:flex;align-items:center;gap:9px}
+
+/* ============ bento ============ */
+.bento{padding:98px 0}
+.bento__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.bx{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.bx:hover{transform:translateY(-4px);box-shadow:0 26px 48px -32px rgba(23,19,15,.6)}
+.bx--w3{grid-column:span 3}.bx--w2{grid-column:span 2}.bx--w6{grid-column:span 6}
+.bx__k{font-family:var(--font-d);font-size:44px;font-weight:900;line-height:1;letter-spacing:-.045em;
+  color:var(--accent);margin-bottom:11px}
+.bx h3{margin-bottom:8px}
+.bx p{margin:0;font-size:15.5px;color:var(--ink-soft)}
+.bx--dark{background:var(--deep);color:var(--paper);border-color:transparent}
+.bx--dark h3{color:var(--paper)}.bx--dark p{color:rgba(250,246,238,.78)}
+.bx--dark .bx__k{color:var(--gold)}
+
+/* ============ depoimentos ============ */
+.tst{padding:92px 0;background:var(--paper-2)}
+.tst__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:27px;
+  display:flex;flex-direction:column;gap:16px}
+.q__s{color:var(--gold);font-size:14px;letter-spacing:.1em}
+.q blockquote{margin:0;font-family:var(--font-d);font-size:18.5px;line-height:1.42;letter-spacing:-.02em}
+.q figcaption{font-family:var(--font-m);font-size:11px;letter-spacing:.09em;color:var(--ink-soft);
+  text-transform:uppercase;margin-top:auto}
+.tst__note{font-size:12px;color:var(--ink-soft);opacity:.75;margin-top:18px;text-align:center}
+
+/* ============ preço ============ */
+.price{padding:98px 0}
+.price__grid{display:grid;grid-template-columns:1fr 1.06fr;gap:20px;margin-top:44px;align-items:start}
+.plan{border:1px solid var(--line);border-radius:22px;padding:32px;background:var(--paper);position:relative}
+.plan--hot{background:var(--deep);color:var(--paper);border-color:transparent;
+  box-shadow:0 34px 70px -40px rgba(18,49,42,.95)}
+.plan--hot h3{color:var(--paper)}
+.plan__tag{position:absolute;top:-13px;left:32px;background:var(--gold);color:var(--deep-2);
+  font-family:var(--font-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 13px;border-radius:999px;font-weight:700}
+.plan__sub{font-size:14.5px;color:var(--ink-soft);margin:7px 0 22px}
+.plan--hot .plan__sub{color:rgba(250,246,238,.72)}
+.plan__p{display:flex;align-items:flex-end;gap:11px;margin-bottom:22px}
+.plan__p b{font-family:var(--font-d);font-size:56px;font-weight:900;line-height:.85;letter-spacing:-.05em}
+.plan__p s{font-family:var(--font-m);font-size:14px;opacity:.55;padding-bottom:7px}
+.plan__p i{font-style:normal;font-family:var(--font-m);font-size:11.5px;opacity:.7;padding-bottom:8px}
+.plan ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:11px}
+.plan li{position:relative;padding-left:26px;font-size:15px;line-height:1.45}
+.plan li::before{content:"";position:absolute;left:0;top:.42em;width:13px;height:8px;
+  border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.plan--hot li::before{border-color:var(--gold)}
+.plan .btn{width:100%}
+.plan__foot{font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-align:center;
+  margin-top:13px;opacity:.72}
+.guar{margin-top:30px;border:1.5px dashed var(--line);border-radius:var(--radius);padding:24px;
+  display:flex;gap:18px;align-items:flex-start}
+.guar__s{font-size:34px;line-height:1;flex:none}
+.guar h3{font-size:19px;margin-bottom:6px}
+.guar p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+
+/* ============ faq ============ */
+.faq{padding:92px 0;background:var(--paper-2)}
+.faq__l{margin-top:38px;border-top:1px solid var(--line)}
+.fq{border-bottom:1px solid var(--line)}
+.fq__q{width:100%;background:none;border:0;text-align:left;padding:21px 44px 21px 0;cursor:pointer;
+  font-family:var(--font-d);font-size:clamp(17px,2vw,20px);font-weight:600;letter-spacing:-.02em;
+  position:relative;line-height:1.3}
+.fq__q::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;
+  border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-70%) rotate(45deg);transition:transform .4s var(--ease)}
+.fq.is-open .fq__q::after{transform:translateY(-30%) rotate(225deg)}
+.fq__a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.fq__a p{margin:0 0 22px;color:var(--ink-soft);font-size:15.5px;max-width:70ch}
+
+/* ============ final ============ */
+.final{padding:104px 0;text-align:center;background:var(--deep);color:var(--paper);overflow:hidden;position:relative}
+.final::before{content:"";position:absolute;width:760px;height:760px;left:50%;top:-52%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(233,180,76,.2),transparent 66%);pointer-events:none}
+.final h2{color:var(--paper);max-width:17ch;margin:0 auto 20px;position:relative}
+.final p{color:rgba(250,246,238,.8);max-width:52ch;margin:0 auto 34px;position:relative}
+.final__meta{font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(250,246,238,.55);margin-top:20px;position:relative}
+
+/* ============ footer ============ */
+.foot{padding:40px 0 106px;font-size:12.5px;color:var(--ink-soft);text-align:center;line-height:1.7}
+.foot a{color:var(--accent-ink)}
+
+/* ============ barra mobile ============ */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(250,246,238,.94);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:11px 16px;
+  padding-bottom:calc(11px + env(safe-area-inset-bottom));
+  display:none;align-items:center;justify-content:space-between;gap:14px;
+  transform:translateY(110%);transition:transform .5s var(--ease)}
+.bar.is-up{transform:none}
+.bar__p b{font-family:var(--font-d);font-size:21px;font-weight:900;letter-spacing:-.03em;display:block;line-height:1}
+.bar__p span{font-family:var(--font-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ============ progresso ============ */
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:59;width:0;transition:width .1s linear}
+
+/* ============ responsivo ============ */
+@media(max-width:980px){
+  .hero__grid{grid-template-columns:1fr;gap:34px}
+  .hero__stack{max-width:340px;margin:0 auto}
+  .hero__blob{width:104vw;height:104vw;right:-34vw;top:-32vw}
+  .pain{grid-template-columns:1fr;gap:30px}
+  .bento__grid{grid-template-columns:repeat(2,1fr)}
+  .bx--w3,.bx--w2{grid-column:span 1}.bx--w6{grid-column:span 2}
+  .tst__grid{grid-template-columns:1fr}
+  .price__grid{grid-template-columns:1fr}
+  .step{grid-template-columns:56px 1fr;gap:18px;padding:26px;top:78px}
+  .step__n{font-size:44px}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .hero{padding:96px 0 34px}
+  .nav__price{display:none}
+  .bar{display:flex}
+  .hero__trust{gap:12px 18px;font-size:12.5px}
+  .bento__grid{grid-template-columns:1fr}
+  .bx--w6{grid-column:span 1}
+  .btn--lg{padding:17px 26px;font-size:16px;width:100%}
+  .hide-sm{display:none}
+  .hero__cta{gap:13px}
+  .hero__cta .btn{width:100%}
+  .final{padding:80px 0}
+  .plan{padding:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .r{opacity:1;transform:none}.rl>span{transform:none}
+  .grain{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="pl" id="pl">
+  <div>
+    <div class="pl__n" id="plN">0</div>
+    <div class="pl__t">minutos por dia</div>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <div class="brand"><span class="brand__b">10</span> Leia em 10 Minutos</div>
+    <div class="nav__cta">
+      <span class="nav__price"><s>R$ 47</s> &nbsp;R$ 10</span>
+      <a href="#planos" class="btn btn--sm" data-mag>Quero o kit</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__blob" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div>
+      <div class="hero__tag r is-in"><b>50 páginas</b><span class="hide-sm">· kit para imprimir</span> · 5 a 8 anos</div>
+      <h1>
+        <span class="rl"><span>Seu filho lendo</span></span>
+        <span class="rl"><span><em class="underline-hand" style="font-style:normal">sozinho<svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M3 8C58 3 122 2 184 5c38 2 78 3 112 1"/></svg></em> em</span></span>
+        <span class="rl"><span>10 minutos por dia</span></span>
+      </h1>
+      <p class="lead r" data-d="3">Sílabas, palavras, frases e textos curtos — na ordem exata em que a criança aprende a ler, com um plano de 30 dias dizendo o que fazer. Você imprime hoje e usa hoje. Sem app, sem tela, sem briga.</p>
+      <div class="hero__cta r" data-d="4">
+        <a href="#planos" class="btn btn--lg" data-mag>Quero o kit por R$ 10 <span class="btn__ico">→</span></a>
+        <span class="hero__meta"><s>de R$ 47</s> · pagamento único<br>acesso imediato no e-mail</span>
+      </div>
+      <div class="hero__trust r" data-d="5">
+        <span>🔒 Pagamento seguro</span>
+        <span>⚡ Pix ou cartão</span>
+        <span>🛡️ Garantia de 7 dias</span>
+      </div>
+    </div>
+    <div class="hero__art r" data-d="2">
+      <div class="hero__stack">
+        <img src="img/p19.jpg" alt="Página de sílabas complexas do kit" width="953" height="1346" loading="eager">
+        <img src="img/p24.jpg" alt="Texto com perguntas de interpretação" width="953" height="1348" loading="eager">
+        <img src="img/p3.jpg" alt="Ficha de família silábica com desenhos" width="953" height="1346" loading="eager">
+      </div>
+      <div class="hero__badge"><b>30</b><span>dias de plano</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq__t" id="mq">
+    <span>15 famílias silábicas</span><span>90 palavras em 3 níveis</span><span>8 textos com perguntas</span>
+    <span>plano de 30 dias</span><span>certificado de leitor</span><span>imprime hoje, usa hoje</span>
+    <span>15 famílias silábicas</span><span>90 palavras em 3 níveis</span><span>8 textos com perguntas</span>
+    <span>plano de 30 dias</span><span>certificado de leitor</span><span>imprime hoje, usa hoje</span>
+  </div>
+</div>
+
+<!-- DOR -->
+<section class="dark">
+  <div class="wrap pain">
+    <div>
+      <div class="eyebrow r">O problema real</div>
+      <h2 class="r" data-d="1" style="margin-top:18px">Você reconhece isso?</h2>
+    </div>
+    <div>
+      <ul class="pain__list">
+        <li class="r">A escola manda ler em casa. Mas ninguém te ensinou <em>como</em>.</li>
+        <li class="r" data-d="1">A criança olha a palavra, chuta qualquer coisa e desiste.</li>
+        <li class="r" data-d="2">Você imprime atividade da internet e é tudo solto, sem ordem.</li>
+        <li class="r" data-d="3">A tarefa vira briga, choro e "não quero mais".</li>
+        <li class="r" data-d="4">A professora avisa que ele está "um pouco atrás" da turma.</li>
+        <li class="r" data-d="5">Já tentou app, vídeo e joguinho. Ele decorou, mas não lê.</li>
+      </ul>
+      <p class="pain__punch r" data-d="6">O problema não é seu filho e não é você. É que ler se aprende <b>em uma ordem</b> — e material solto pula etapas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ETAPAS -->
+<section class="steps">
+  <div class="wrap">
+    <div class="steps__head">
+      <div class="eyebrow r">Como funciona</div>
+      <h2 class="r" data-d="1" style="margin:18px 0 14px">Do som da sílaba ao texto inteiro, em 4 etapas.</h2>
+      <p class="lead r" data-d="2">Cada etapa só começa quando a anterior está firme. É isso que material solto nunca faz.</p>
+    </div>
+    <div class="step r">
+      <div class="step__n">01</div>
+      <div>
+        <h3>A sílaba, com som e desenho</h3>
+        <p>15 famílias simples e 10 páginas de complexas — CH, LH, NH, RR, SS, QU, GU, Ç, X, BR, TR e mais. Cada página traz a sílaba grande, uma palavra com desenho e espaço para o traçado.</p>
+        <span class="step__tag">25 páginas</span>
+      </div>
+    </div>
+    <div class="step r">
+      <div class="step__n">02</div>
+      <div>
+        <h3>A palavra, em três níveis</h3>
+        <p>90 palavras que sobem de dificuldade aos poucos, cada uma com uma caixinha para marcar quando ele leu sozinho — e um campo de data do lado.</p>
+        <span class="step__tag">com ficha de progresso</span>
+      </div>
+    </div>
+    <div class="step r">
+      <div class="step__n">03</div>
+      <div>
+        <h3>A frase, uma ideia por linha</h3>
+        <p>22 frases curtas e depois maiores, em letra grande e bem espaçada, para ele não se perder no meio do caminho.</p>
+        <span class="step__tag">2 níveis</span>
+      </div>
+    </div>
+    <div class="step r">
+      <div class="step__n">04</div>
+      <div>
+        <h3>O texto — e entender o que leu</h3>
+        <p>8 historinhas com 3 perguntas cada: O gato Tom, A bola da Bia, O sapo e a lagoa e mais 5. Ler é decifrar e compreender, e a segunda parte quase todo material esquece.</p>
+        <span class="step__tag">+ plano de 30 dias</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VITRINE -->
+<section class="gal">
+  <div class="wrap gal__head">
+    <div class="eyebrow r">Veja por dentro</div>
+    <h2 class="r" data-d="1" style="margin-top:18px">Páginas reais, do jeito que saem da impressora.</h2>
+  </div>
+  <div class="gal__track" id="gal">
+    <figure class="card r"><img src="img/p3.jpg" alt="Ficha de família silábica" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">01</span><span class="card__t">Família silábica</span></figcaption></figure>
+    <figure class="card r" data-d="1"><img src="img/p7.jpg" alt="Ficha de palavras com caixinhas" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">02</span><span class="card__t">Ficha de palavras</span></figcaption></figure>
+    <figure class="card r" data-d="2"><img src="img/p19.jpg" alt="Página de sílabas com LH" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">03</span><span class="card__t">Sílabas com LH</span></figcaption></figure>
+    <figure class="card r" data-d="3"><img src="img/p24.jpg" alt="Texto curto com perguntas" width="953" height="1348" loading="lazy"><figcaption class="card__c"><span class="card__n">04</span><span class="card__t">Texto com perguntas</span></figcaption></figure>
+    <figure class="card r" data-d="4"><img src="img/p32.jpg" alt="Brincadeira ligue ao desenho" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">05</span><span class="card__t">Ligue ao desenho</span></figcaption></figure>
+    <figure class="card r" data-d="5"><img src="img/p40.jpg" alt="Plano de 30 dias" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">06</span><span class="card__t">Plano de 30 dias</span></figcaption></figure>
+    <figure class="card r" data-d="6"><img src="img/p46.jpg" alt="Página para a professora" width="953" height="1346" loading="lazy"><figcaption class="card__c"><span class="card__n">07</span><span class="card__t">Para a professora</span></figcaption></figure>
+    <figure class="card r" data-d="6"><img src="img/p47.jpg" alt="Certificado de leitor" width="953" height="1348" loading="lazy"><figcaption class="card__c"><span class="card__n">08</span><span class="card__t">Certificado de leitor</span></figcaption></figure>
+  </div>
+  <div class="wrap"><div class="gal__hint">← arraste para ver mais →</div></div>
+</section>
+
+<!-- BENTO -->
+<section class="bento">
+  <div class="wrap">
+    <div class="eyebrow r">O que vem dentro</div>
+    <h2 class="r" data-d="1" style="margin:18px 0 12px">50 páginas. Imprime hoje, usa hoje.</h2>
+    <p class="lead r" data-d="2">PDF em A4, feito para sair bem em preto e branco na impressora comum.</p>
+    <div class="bento__grid">
+      <div class="bx bx--w3 r"><div class="bx__k">15</div><h3>Famílias silábicas</h3><p>B, C, D, F, G, J, L, M, N, P, R, S, T, V e Z. Sílaba grande, palavra com desenho, frase e espaço para escrever.</p></div>
+      <div class="bx bx--w3 r" data-d="1"><div class="bx__k">10</div><h3>Páginas de sílabas complexas</h3><p>CH, LH, NH, RR, SS, QU, GU, Ç, X e os encontros BR, CR, DR, FL, PL, GL, TR, PR, GR. Onde a maioria trava.</p></div>
+      <div class="bx bx--w2 r"><div class="bx__k">90</div><h3>Palavras em 3 níveis</h3><p>Com caixinha para marcar cada uma lida sozinho e campo de data.</p></div>
+      <div class="bx bx--w2 r" data-d="1"><div class="bx__k">8</div><h3>Textos com perguntas</h3><p>Historinhas curtas, cada uma com 3 perguntas de interpretação.</p></div>
+      <div class="bx bx--w2 r" data-d="2"><div class="bx__k">5</div><h3>Brincadeiras de leitura</h3><p>Complete a palavra, ligue ao desenho, caça-palavras, quantas sílabas e separe as sílabas.</p></div>
+      <div class="bx bx--w6 bx--dark r" data-d="3"><div class="bx__k">+7</div><h3>Páginas de apoio</h3><p>Plano de 30 dias dizendo o que fazer em cada dia, guia para você, página com dicas para a professora, ficha de progresso e certificado de leitor para ele pendurar na parede.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="tst">
+  <div class="wrap">
+    <div class="eyebrow r">Quem já usou</div>
+    <h2 class="r" data-d="1" style="margin-top:18px">Em duas semanas dá pra ver a diferença.</h2>
+    <div class="tst__grid">
+      <figure class="q r"><div class="q__s">★★★★★</div><blockquote>"Meu filho de 6 anos travava em toda palavra. Com as fichas de sílaba ele começou a juntar sozinho. Hoje lê as frases do kit sem ajuda."</blockquote><figcaption>mãe do Theo, 6 anos</figcaption></figure>
+      <figure class="q r" data-d="1"><div class="q__s">★★★★★</div><blockquote>"Uso com meus alunos do 1º ano como tarefa de casa. As caixinhas de marcar viraram competição saudável na sala."</blockquote><figcaption>Prof. Camila · 1º ano</figcaption></figure>
+      <figure class="q r" data-d="2"><div class="q__s">★★★★★</div><blockquote>"O que mais gostei foi o guia. Eu não sabia que era pra falar a sílaba e não a palavra inteira. Mudou tudo."</blockquote><figcaption>pai da Alice, 7 anos</figcaption></figure>
+    </div>
+    <p class="tst__note">Depoimentos ilustrativos de uso do material.</p>
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section class="price" id="planos">
+  <div class="wrap">
+    <div class="eyebrow r">Escolha o seu</div>
+    <h2 class="r" data-d="1" style="margin:18px 0 12px">Só o kit, ou o combo completo.</h2>
+    <p class="lead r" data-d="2">Os dois com acesso imediato e garantia de 7 dias.</p>
+    <div class="price__grid">
+      <div class="plan r">
+        <h3>Kit Leia em 10 Minutos</h3>
+        <p class="plan__sub">O essencial para começar hoje</p>
+        <div class="plan__p"><s>R$ 47</s><b>R$ 10</b><i>pagamento único</i></div>
+        <ul>
+          <li>50 páginas em PDF, prontas para imprimir em A4</li>
+          <li>15 famílias silábicas + 10 páginas de sílabas complexas</li>
+          <li>90 palavras em 3 níveis e 22 frases</li>
+          <li>8 textos com perguntas + 5 brincadeiras</li>
+          <li>Plano de 30 dias, guia, ficha de progresso e certificado</li>
+        </ul>
+        <a href="#" class="btn" data-checkout="kit" data-mag>Quero só o kit por R$ 10</a>
+        <div class="plan__foot">Pix ou cartão · recebe em até 1 minuto</div>
+      </div>
+      <div class="plan plan--hot r" data-d="1">
+        <span class="plan__tag">⭐ Mais escolhido</span>
+        <h3>Combo Completo</h3>
+        <p class="plan__sub">Kit + 3 complementos para ler, escrever e brincar</p>
+        <div class="plan__p"><s>R$ 40</s><b>R$ 27</b><i>pagamento único</i></div>
+        <ul>
+          <li>Tudo do kit Leia em 10 Minutos (50 páginas)</li>
+          <li><b>Caderno de Caligrafia</b> — 16 páginas para cobrir e escrever</li>
+          <li><b>25 Cartazes de Sílabas</b> para a parede do quarto ou da sala</li>
+          <li><b>Memória e Bingo das Sílabas</b> — 48 cartas + 6 cartelas</li>
+          <li>104 páginas no total · você economiza R$ 13</li>
+        </ul>
+        <a href="#" class="btn" data-checkout="combo" data-mag>Quero o combo por R$ 27</a>
+        <div class="plan__foot">Pix ou cartão · acesso imediato</div>
+      </div>
+    </div>
+    <div class="guar r">
+      <div class="guar__s">🛡️</div>
+      <div>
+        <h3>Garantia de 7 dias, sem pergunta</h3>
+        <p>Imprime, usa com a criança e, se não gostar, manda uma mensagem e devolvemos o valor inteiro. O risco é meu, não seu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="eyebrow r">Antes de comprar</div>
+    <h2 class="r" data-d="1" style="margin-top:18px">Perguntas que toda mãe faz.</h2>
+    <div class="faq__l" id="faq">
+      <div class="fq"><button class="fq__q">Como eu recebo o kit?</button><div class="fq__a"><p>Logo após o pagamento você recebe o link para baixar o PDF no e-mail e no WhatsApp. É um arquivo só, com as 50 páginas. O combo vem com 4 arquivos.</p></div></div>
+      <div class="fq"><button class="fq__q">Preciso de impressora colorida?</button><div class="fq__a"><p>Não. O kit foi feito para ficar bom em preto e branco também. Se quiser, imprime só as páginas que vai usar na semana.</p></div></div>
+      <div class="fq"><button class="fq__q">Serve para que idade?</button><div class="fq__a"><p>De 5 a 8 anos, ou qualquer criança em fase de alfabetização. Quem já lê um pouco começa pelas sílabas complexas e pelos textos.</p></div></div>
+      <div class="fq"><button class="fq__q">Meu filho tem TDAH ou autismo. Funciona?</button><div class="fq__a"><p>O kit usa letra grande, uma etapa por página e desenho em toda palavra, o que ajuda quem precisa de mais repetição e menos distração. Não substitui acompanhamento profissional.</p></div></div>
+      <div class="fq"><button class="fq__q">Posso usar com vários alunos?</button><div class="fq__a"><p>Sim. Você pode imprimir quantas cópias quiser para uso em casa ou em sala. Só não pode revender o arquivo.</p></div></div>
+      <div class="fq"><button class="fq__q">E se eu não gostar?</button><div class="fq__a"><p>Você tem 7 dias de garantia. Manda uma mensagem e devolvemos o valor.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow r" style="justify-content:center;color:rgba(250,246,238,.6)">Última coisa</div>
+    <h2 class="r" data-d="1" style="margin-top:20px">Hoje à noite pode ser a primeira página lida sozinho.</h2>
+    <p class="r" data-d="2">Ou pode ser mais um mês de "não quero ler". A diferença custa dez reais e uma folha de papel.</p>
+    <a href="#planos" class="btn btn--lg r" data-d="3" data-mag>Começar por R$ 10 <span class="btn__ico">→</span></a>
+    <div class="final__meta r" data-d="4">de R$ 47 · acesso imediato · garantia de 7 dias</div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    Leia em 10 Minutos · Material educativo digital<br>
+    Este site não faz parte do Facebook ou da Meta. Ao comprar você concorda com os termos de uso e a política de privacidade.<br>
+    Suporte: <a href="https://wa.me/5555996241177">WhatsApp (55) 99624-1177</a>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="bar__p"><b>R$ 10</b><span>de R$ 47</span></div>
+  <a href="#planos" class="btn btn--sm">Quero o kit →</a>
+</div>
+
+<script>
+/* ===== COLE AQUI OS LINKS DO CHECKOUT (Cakto) ===== */
+var CHECKOUT_KIT   = "";   // link do produto Leia em 10 Minutos (R$ 10)
+var CHECKOUT_COMBO = "";   // link do Combo Completo (R$ 27). Vazio = usa o do kit.
+
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- checkout --- */
+  document.querySelectorAll("[data-checkout]").forEach(function(a){
+    var u = a.dataset.checkout === "combo" ? (CHECKOUT_COMBO || CHECKOUT_KIT) : CHECKOUT_KIT;
+    if(u){ a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+  });
+
+  /* --- preloader: conta 0→10 e some (CSS garante a saída) --- */
+  var plN = document.getElementById("plN"), n = 0;
+  var tick = setInterval(function(){
+    n++; plN.textContent = n;
+    if(n >= 10) clearInterval(tick);
+  }, 70);
+  window.addEventListener("load", function(){
+    setTimeout(function(){ document.getElementById("pl").style.display = "none"; }, 1500);
+  });
+
+  /* --- reveal por IntersectionObserver --- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); }
+    });
+  }, { threshold: .16, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".r, .rl").forEach(function(el){ io.observe(el); });
+  /* h1 entra na carga, sem esperar scroll */
+  setTimeout(function(){
+    document.querySelectorAll(".hero .rl, .hero .r").forEach(function(el){ el.classList.add("is-in"); });
+  }, 1150);
+
+  /* --- nav + progresso + barra mobile --- */
+  var nav = document.getElementById("nav"), prog = document.getElementById("prog"),
+      bar = document.getElementById("bar"), ticking = false;
+  function onScroll(){
+    var y = window.scrollY || 0;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    nav.classList.toggle("is-stuck", y > 40);
+    prog.style.width = (h > 0 ? (y / h) * 100 : 0) + "%";
+    bar.classList.toggle("is-up", y > window.innerHeight * .75);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive:true });
+  onScroll();
+
+  /* --- FAQ --- */
+  document.querySelectorAll(".fq__q").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var item = btn.parentElement, panel = item.querySelector(".fq__a");
+      var open = item.classList.contains("is-open");
+      document.querySelectorAll(".fq.is-open").forEach(function(o){
+        o.classList.remove("is-open"); o.querySelector(".fq__a").style.maxHeight = null;
+      });
+      if(!open){ item.classList.add("is-open"); panel.style.maxHeight = panel.scrollHeight + "px"; }
+    });
+  });
+
+  /* --- âncoras suaves --- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(ev){
+      var t = document.querySelector(a.getAttribute("href"));
+      if(!t) return;
+      ev.preventDefault();
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70,
+                        behavior: reduce ? "auto" : "smooth" });
+    });
+  });
+
+  /* --- botão magnético (só mouse fino) --- */
+  if(window.matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce){
+    document.querySelectorAll("[data-mag]").forEach(function(b){
+      b.addEventListener("mousemove", function(e){
+        var r = b.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+        b.style.transform = "translate(" + x*.16 + "px," + (y*.22 - 2) + "px)";
+      });
+      b.addEventListener("mouseleave", function(){ b.style.transform = ""; });
+    });
+  }
+
+  /* --- arrasto do trilho com o mouse --- */
+  var gal = document.getElementById("gal"), down = false, sx = 0, sl = 0;
+  gal.addEventListener("mousedown", function(e){ down = true; sx = e.pageX; sl = gal.scrollLeft; gal.style.cursor = "grabbing"; });
+  ["mouseup","mouseleave"].forEach(function(ev){
+    gal.addEventListener(ev, function(){ down = false; gal.style.cursor = ""; });
+  });
+  gal.addEventListener("mousemove", function(e){
+    if(!down) return;
+    e.preventDefault();
+    gal.scrollLeft = sl - (e.pageX - sx) * 1.35;
+  });
+})();
+</script>
+</body>
+</html>
