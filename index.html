@@ -112,6 +112,18 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .blob--2{width:38vw;height:38vw;max-width:420px;max-height:420px;background:rgba(58,102,219,.36);right:-10vw;top:2vw}
 .blob--3{width:30vw;height:30vw;max-width:340px;max-height:340px;background:rgba(255,122,162,.34);right:14vw;bottom:-8vw}
 .hero__in{position:relative;z-index:2}
+/* figuras do próprio kit flutuando ao redor do título: é o que dá o clima de
+   livrinho infantil e liga o site ao material que a pessoa vai receber */
+.fig{position:absolute;pointer-events:none;z-index:1;filter:drop-shadow(0 8px 14px rgba(36,48,63,.16));
+  animation:flutua 6s ease-in-out infinite}
+.fig img{width:100%;height:100%}
+.fig--1{width:86px;left:6%;top:120px;animation-delay:-1s}
+.fig--2{width:70px;right:8%;top:130px;animation-delay:-3s;animation-duration:7s}
+.fig--3{width:58px;left:12%;top:360px;animation-delay:-2s;animation-duration:8s}
+.fig--4{width:64px;right:13%;top:330px;animation-delay:-4s}
+.fig--5{width:50px;left:24%;top:520px;animation-delay:-5s;animation-duration:9s}
+.fig--6{width:56px;right:24%;top:540px;animation-delay:-2.5s;animation-duration:7.5s}
+@keyframes flutua{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(5deg)}}
 .hero h1{margin:16px auto 0;max-width:15ch}
 .hero__mock{margin:14px auto 2px;max-width:900px;position:relative}
 .hero__mock img{width:100%;filter:drop-shadow(0 26px 40px rgba(36,48,63,.2))}
@@ -125,22 +137,27 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .hero__price{font-size:14px;color:var(--soft);font-weight:600}
 .hero__price s{opacity:.65}
 .hero__price b{color:var(--ink)}
+.hero__timer{font-family:var(--fd);font-weight:700;font-size:15px;color:#B23A1C;background:#FFE9E2;
+  border:2px solid rgba(242,96,60,.35);border-radius:999px;padding:6px 16px}
+.hero__timer b{font-variant-numeric:tabular-nums}
 
 /* selos */
 .seals{background:var(--azul);color:#fff;padding:28px 0;position:relative;overflow:hidden}
 .seals .dots{background-image:radial-gradient(circle,rgba(255,255,255,.2) 1.6px,transparent 1.6px)}
 .seals__g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;position:relative}
-.seal i{font-style:normal;font-size:26px;display:block;margin-bottom:6px}
+.seal i{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 8px;background:#fff;border-radius:50%;
+  box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.seal i img{width:40px;height:40px}
 .seal b{display:block;font-family:var(--fd);font-size:16px;font-weight:700}
 .seal span{font-size:12.5px;opacity:.85}
 
 /* dor */
 .pain{padding:78px 0;background:var(--cream);text-align:center;position:relative;overflow:hidden}
 .pain__g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px;text-align:left;position:relative}
-.pain__g div{background:#fff;border:2px solid rgba(242,96,60,.25);border-radius:16px;padding:16px 18px;
-  font-size:15.5px;font-weight:600;display:flex;gap:11px;align-items:flex-start;
+.pain__g div{background:#fff;border:2px solid rgba(242,96,60,.25);border-radius:16px;padding:16px 18px 16px 42px;
+  font-size:15.5px;font-weight:600;position:relative;
   box-shadow:0 4px 0 rgba(242,96,60,.14)}
-.pain__g div::before{content:"✕";color:var(--coral);font-weight:800;flex:none;margin-top:1px}
+.pain__g div::before{content:"✕";color:var(--coral);font-weight:800;position:absolute;left:18px;top:17px}
 .pain__p{margin:30px auto 0;max-width:58ch;font-family:var(--fd);font-size:clamp(20px,2.7vw,28px);
   line-height:1.25;font-weight:700;position:relative}
 .pain__p b{color:var(--coral)}
@@ -156,6 +173,8 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .st:nth-child(3){background:var(--verde);box-shadow:0 8px 0 #14804C}
 .st:nth-child(4){background:var(--roxo);box-shadow:0 8px 0 #6B3FD4}
 .st__n{font-family:var(--fd);font-size:44px;font-weight:800;line-height:1;opacity:.35}
+.st__f{position:absolute;right:16px;top:16px;width:54px;height:54px;background:#fff;border-radius:50%;padding:9px;
+  box-shadow:0 4px 0 rgba(0,0,0,.18)}
 .st h3{margin:6px 0 8px;color:#fff}
 .st p{margin:0;font-size:14.5px;opacity:.95;line-height:1.45}
 
@@ -257,6 +276,10 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .final h2{color:#fff;max-width:18ch;margin:14px auto 14px;position:relative}
 .final p{color:rgba(255,255,255,.9);max-width:48ch;margin:0 auto 28px;position:relative;font-weight:600}
 .final .eyebrow{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4);color:#fff}
+.fig--f1{width:72px;left:7%;top:60px;animation-delay:-2s}
+.fig--f2{width:54px;left:16%;bottom:70px;animation-delay:-4s;animation-duration:8s}
+.fig--f3{width:64px;right:8%;top:80px;animation-delay:-1s;animation-duration:7s}
+.fig--f4{width:60px;right:15%;bottom:60px;animation-delay:-3s}
 .final__m{font-size:13px;color:rgba(255,255,255,.75);margin-top:16px;position:relative;font-weight:600}
 
 .foot{padding:34px 0 100px;font-size:12.5px;color:var(--soft);text-align:center;line-height:1.7}
@@ -288,6 +311,9 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
   .btn--lg{width:100%;padding:18px 22px;font-size:18px}
   .hero__cta{width:100%}
   .hero__mock{max-width:88%;margin-top:10px}
+  .fig--3,.fig--4,.fig--5,.fig--6,.fig--f2,.fig--f4{display:none}
+  .fig--f1{width:44px;left:4%;top:24px}.fig--f3{width:40px;right:5%;top:30px}
+  .fig--1{width:56px;left:4%;top:104px}.fig--2{width:48px;right:5%;top:112px}
   .steps__g{grid-template-columns:1fr}
   .plan{padding:24px 20px}
   .nav .btn{display:none}
@@ -318,7 +344,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 <div class="prog" id="prog" aria-hidden="true"></div>
 
 <div class="top" id="top">
-  <div class="top__in" id="topTxt">🎉 Oferta de lançamento: <b>R$ 19,90</b> em vez de R$ 47 · termina em <span class="top__c" id="clock">--:--:--</span></div>
+  <div class="top__in" id="topTxt">🎉 Oferta de lançamento: <b>R$ 19,90</b> em vez de R$ 47 · o desconto some em <span class="top__c" data-clock>--:--</span></div>
 </div>
 
 <header class="nav" id="nav">
@@ -333,6 +359,12 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
   <div class="blob blob--1" aria-hidden="true"></div>
   <div class="blob blob--2" aria-hidden="true"></div>
   <div class="blob blob--3" aria-hidden="true"></div>
+  <div class="fig fig--1" aria-hidden="true"><img src="img/fig/sol.svg" alt="" width="86" height="86"></div>
+  <div class="fig fig--2" aria-hidden="true"><img src="img/fig/pipa.svg" alt="" width="70" height="70"></div>
+  <div class="fig fig--3" aria-hidden="true"><img src="img/fig/estrela.svg" alt="" width="58" height="58"></div>
+  <div class="fig fig--4" aria-hidden="true"><img src="img/fig/nuvem.svg" alt="" width="64" height="64"></div>
+  <div class="fig fig--5" aria-hidden="true"><img src="img/fig/flor.svg" alt="" width="50" height="50"></div>
+  <div class="fig fig--6" aria-hidden="true"><img src="img/fig/gato.svg" alt="" width="56" height="56"></div>
   <div class="wrap hero__in">
     <div class="eyebrow r is-in">📚 Kit para imprimir · 5 a 8 anos</div>
     <h1 class="r is-in" data-d="1">Seu filho lendo <span class="hl">sozinho</span> em 10 minutos por dia</h1>
@@ -353,6 +385,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
     <div class="hero__cta r is-in" data-d="5">
       <a href="#ofertas" class="btn btn--lg btn--pulse">Quero o kit por R$ 19,90</a>
       <span class="hero__price"><s>de R$ 47</s> · <b>R$ 19,90</b> no Pix · pagamento único</span>
+      <span class="hero__timer">⏱ o desconto some em <b data-clock>--:--</b></span>
     </div>
   </div>
 </section>
@@ -360,10 +393,10 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 <section class="seals">
   <div class="dots" aria-hidden="true"></div>
   <div class="wrap seals__g">
-    <div class="seal r"><i>⚡</i><b>Acesso imediato</b><span>chega no e-mail em segundos</span></div>
-    <div class="seal r" data-d="1"><i>🖨️</i><b>PDF em A4</b><span>sai bem em preto e branco</span></div>
-    <div class="seal r" data-d="2"><i>👧</i><b>5 a 8 anos</b><span>alfabetização e reforço</span></div>
-    <div class="seal r" data-d="3"><i>🛡️</i><b>7 dias de garantia</b><span>não gostou, devolvo</span></div>
+    <div class="seal r"><i><img src="img/fig/estrela.svg" alt="" width="44" height="44"></i><b>Acesso imediato</b><span>chega no e-mail em segundos</span></div>
+    <div class="seal r" data-d="1"><i><img src="img/fig/livro.svg" alt="" width="44" height="44"></i><b>PDF em A4</b><span>sai bem em preto e branco</span></div>
+    <div class="seal r" data-d="2"><i><img src="img/fig/gato.svg" alt="" width="44" height="44"></i><b>5 a 8 anos</b><span>alfabetização e reforço</span></div>
+    <div class="seal r" data-d="3"><i><img src="img/fig/sol.svg" alt="" width="44" height="44"></i><b>7 dias de garantia</b><span>não gostou, devolvo</span></div>
   </div>
 </section>
 
@@ -390,10 +423,10 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
     <h2 class="r" data-d="1" style="margin:14px 0 10px">Do som da sílaba ao texto inteiro</h2>
     <p class="lead r" data-d="2" style="max-width:56ch;margin:0 auto">Cada etapa só começa quando a anterior está firme. É isso que material solto nunca faz.</p>
     <div class="steps__g" style="text-align:left">
-      <div class="st r"><div class="st__n">01</div><h3>A sílaba</h3><p>15 famílias simples e 10 páginas de complexas: CH, LH, NH, RR, QU, Ç, X, BR, TR e mais.</p></div>
-      <div class="st r" data-d="1"><div class="st__n">02</div><h3>A palavra</h3><p>90 palavras em 3 níveis, com caixinha para marcar cada uma lida sozinho e campo de data.</p></div>
-      <div class="st r" data-d="2"><div class="st__n">03</div><h3>A frase</h3><p>22 frases curtas e maiores, letra grande, uma ideia por linha para ele não se perder.</p></div>
-      <div class="st r" data-d="3"><div class="st__n">04</div><h3>O texto</h3><p>8 historinhas com 3 perguntas cada, para treinar entender o que leu — não só decifrar.</p></div>
+      <div class="st r"><img class="st__f" src="img/fig/estrela.svg" alt="" width="54" height="54"><div class="st__n">01</div><h3>A sílaba</h3><p>15 famílias simples e 10 páginas de complexas: CH, LH, NH, RR, QU, Ç, X, BR, TR e mais.</p></div>
+      <div class="st r" data-d="1"><img class="st__f" src="img/fig/bolo.svg" alt="" width="54" height="54"><div class="st__n">02</div><h3>A palavra</h3><p>90 palavras em 3 níveis, com caixinha para marcar cada uma lida sozinho e campo de data.</p></div>
+      <div class="st r" data-d="2"><img class="st__f" src="img/fig/lapis.svg" alt="" width="54" height="54"><div class="st__n">03</div><h3>A frase</h3><p>22 frases curtas e maiores, letra grande, uma ideia por linha para ele não se perder.</p></div>
+      <div class="st r" data-d="3"><img class="st__f" src="img/fig/livro.svg" alt="" width="54" height="54"><div class="st__n">04</div><h3>O texto</h3><p>8 historinhas com 3 perguntas cada, para treinar entender o que leu — não só decifrar.</p></div>
     </div>
   </div>
 </section>
@@ -538,6 +571,10 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 
 <section class="final">
   <div class="dots" aria-hidden="true"></div>
+  <div class="fig fig--f1" aria-hidden="true"><img src="img/fig/lua.svg" alt="" width="72" height="72"></div>
+  <div class="fig fig--f2" aria-hidden="true"><img src="img/fig/estrela.svg" alt="" width="54" height="54"></div>
+  <div class="fig fig--f3" aria-hidden="true"><img src="img/fig/livro.svg" alt="" width="64" height="64"></div>
+  <div class="fig fig--f4" aria-hidden="true"><img src="img/fig/sapo.svg" alt="" width="60" height="60"></div>
   <div class="wrap">
     <span class="eyebrow r">Última coisa</span>
     <h2 class="r" data-d="1">Hoje à noite pode ser a primeira página lida sozinho</h2>
@@ -565,8 +602,11 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 var CHECKOUT_KIT   = "https://pay.cakto.com.br/e2nadjy";
 var CHECKOUT_COMBO = "https://pay.cakto.com.br/3cpf8ay";
 
-/* ===== FIM DA OFERTA — data real ===== */
-var FIM_DA_OFERTA = "2026-09-28T23:59:59-03:00";
+/* ===== FIM DA OFERTA — 15 minutos por visitante =====
+   O relógio começa quando a pessoa abre a página e sobrevive a recarregar
+   (fica no localStorage). Quando zera, recomeça: o preço do checkout é o
+   mesmo, então "terminou" ao lado de um botão de R$ 19,90 só confundiria. */
+var MINUTOS_DA_OFERTA = 15;
 
 (function(){
   "use strict";
@@ -586,17 +626,23 @@ var FIM_DA_OFERTA = "2026-09-28T23:59:59-03:00";
     });
   });
 
-  var alvo = new Date(FIM_DA_OFERTA).getTime(),
-      clock = document.getElementById("clock"),
-      topTxt = document.getElementById("topTxt"), iv;
+  var clocks = document.querySelectorAll("[data-clock]"), CHAVE = "leia10_fim_oferta", alvo;
+  function novoAlvo(){
+    alvo = Date.now() + MINUTOS_DA_OFERTA * 6e4;
+    try { localStorage.setItem(CHAVE, String(alvo)); } catch(e){}
+  }
+  try {
+    alvo = Number(localStorage.getItem(CHAVE));
+    if(!alvo || alvo - Date.now() > MINUTOS_DA_OFERTA * 6e4) novoAlvo();
+  } catch(e){ novoAlvo(); }
   function pad(n){ return String(n).padStart(2,"0"); }
   function tick(){
     var d = alvo - Date.now();
-    if(d <= 0){ topTxt.textContent = "A oferta de lançamento terminou."; if(iv) clearInterval(iv); return; }
-    var dias = Math.floor(d/864e5), h = Math.floor(d/36e5)%24, m = Math.floor(d/6e4)%60, s = Math.floor(d/1e3)%60;
-    clock.textContent = (dias > 0 ? dias + "d " : "") + pad(h) + ":" + pad(m) + ":" + pad(s);
+    if(d <= 0){ novoAlvo(); d = alvo - Date.now(); }
+    var t = pad(Math.floor(d/6e4)) + ":" + pad(Math.floor(d/1e3)%60);
+    clocks.forEach(function(c){ c.textContent = t; });
   }
-  tick(); iv = setInterval(tick, 1000);
+  tick(); setInterval(tick, 1000);
 
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); } });
