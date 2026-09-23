@@ -341,6 +341,13 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
   .r{opacity:1;transform:none}
 }
 </style>
+<!-- TikTok Pixel (MAJEX - Sites) -->
+<script>
+var TIKTOK_PIXEL = "DAQ49UJC77U1JKBFUR2G";
+!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(TIKTOK_PIXEL);ttq.page();}(window,document,"ttq");
+ttq.track("ViewContent",{content_name:"Kit Leia em 10 Minutos",value:19.90,currency:"BRL"});
+</script>
+<!-- /TikTok Pixel -->
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -633,11 +640,20 @@ var MINUTOS_DA_OFERTA = 15;
 (function(){
   "use strict";
 
+  var qs = new URLSearchParams(location.search), p = new URLSearchParams();
+  qs.forEach(function(v,k){ if(/^(utm_|ttclid$|fbclid$|gclid$|src$|sck$)/.test(k)) p.set(k,v); });
+  var passa = p.toString() ? "?" + p.toString() : "";
+
   document.querySelectorAll("[data-checkout]").forEach(function(a){
     var combo = a.dataset.checkout === "combo";
     var u = combo ? CHECKOUT_COMBO : CHECKOUT_KIT;
-    if(u){ a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+    if(u){ a.href = u + passa; a.target = "_blank"; a.rel = "noopener"; }
     a.addEventListener("click", function(){
+      if(window.ttq) ttq.track("InitiateCheckout", {
+        value: combo ? 37.90 : 19.90,
+        currency: "BRL",
+        content_name: combo ? "Combo Completo" : "Kit Leia em 10 Minutos"
+      });
       if(typeof fbq === "function"){
         fbq("track", "InitiateCheckout", {
           value: combo ? 37.90 : 19.90,
