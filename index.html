@@ -50,6 +50,10 @@ section{position:relative}
   background-size:26px 26px}
 /* onda divisória */
 .wave{display:block;width:100%;height:auto;margin-bottom:-2px}
+/* onda no topo da seção, pintada com a cor da seção de cima: é o recorte
+   de papel que faz a página parecer livro infantil e não site de software */
+.wv{position:absolute;left:0;top:-1px;width:100%;height:56px;z-index:1;pointer-events:none}
+.wv+*{position:relative;z-index:2}
 
 /* barra de oferta */
 .top{position:fixed;top:0;left:0;right:0;z-index:58;
@@ -97,6 +101,10 @@ section{position:relative}
 h1,h2,h3{font-family:var(--fd);font-weight:800;line-height:1.08;margin:0;letter-spacing:-.01em}
 h1{font-size:clamp(33px,6.4vw,58px);line-height:1.2}
 h2{font-size:clamp(27px,4.6vw,44px)}
+h2.sw{display:block;width:max-content;max-width:100%;margin-left:auto!important;margin-right:auto!important;
+  position:relative;isolation:isolate}
+h2.sw::after{content:"";position:absolute;left:8%;right:8%;bottom:-6px;height:12px;border-radius:99px;z-index:-1;
+  background:linear-gradient(90deg,var(--amarelo),var(--rosa));opacity:.8;transform:rotate(-1deg)}
 h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:13px;
   letter-spacing:.08em;text-transform:uppercase;background:var(--cream);border:2px solid var(--amarelo);
@@ -106,7 +114,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 
 /* HERO */
 .hero{padding:112px 0 44px;text-align:center;position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#FFF9EC 0%,var(--paper) 72%)}
+  background:linear-gradient(180deg,#E6F1FF 0%,#FFF9EC 46%,var(--paper) 78%)}
 .blob{position:absolute;border-radius:50%;filter:blur(38px);pointer-events:none;opacity:.55}
 .blob--1{width:42vw;height:42vw;max-width:460px;max-height:460px;background:rgba(255,197,61,.6);left:-12vw;top:-6vw}
 .blob--2{width:38vw;height:38vw;max-width:420px;max-height:420px;background:rgba(58,102,219,.36);right:-10vw;top:2vw}
@@ -114,16 +122,16 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .hero__in{position:relative;z-index:2}
 /* figuras do próprio kit flutuando ao redor do título: é o que dá o clima de
    livrinho infantil e liga o site ao material que a pessoa vai receber */
-.fig{position:absolute;pointer-events:none;z-index:1;filter:drop-shadow(0 8px 14px rgba(36,48,63,.16));
-  animation:flutua 6s ease-in-out infinite}
+.fig{position:absolute;pointer-events:none;z-index:1;will-change:transform;
+  animation:flutua 9s ease-in-out infinite}
 .fig img{width:100%;height:100%}
-.fig--1{width:86px;left:6%;top:120px;animation-delay:-1s}
-.fig--2{width:70px;right:8%;top:130px;animation-delay:-3s;animation-duration:7s}
-.fig--3{width:58px;left:12%;top:360px;animation-delay:-2s;animation-duration:8s}
-.fig--4{width:64px;right:13%;top:330px;animation-delay:-4s}
-.fig--5{width:50px;left:24%;top:520px;animation-delay:-5s;animation-duration:9s}
-.fig--6{width:56px;right:24%;top:540px;animation-delay:-2.5s;animation-duration:7.5s}
-@keyframes flutua{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(5deg)}}
+.fig--1{width:110px;left:6%;top:120px;animation-delay:-1s}
+.fig--2{width:92px;right:8%;top:130px;animation-delay:-3s;animation-duration:11s}
+.fig--3{width:72px;left:12%;top:360px;animation-delay:-2s;animation-duration:12s}
+.fig--4{width:96px;right:13%;top:330px;animation-delay:-4s}
+.fig--5{width:50px;left:24%;top:520px;animation-delay:-5s;animation-duration:10s}
+.fig--6{width:56px;right:24%;top:540px;animation-delay:-2.5s;animation-duration:10.5s}
+@keyframes flutua{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-12px,0)}}
 .hero h1{margin:16px auto 0;max-width:15ch}
 .hero__mock{margin:14px auto 2px;max-width:900px;position:relative}
 .hero__mock img{width:100%;filter:drop-shadow(0 26px 40px rgba(36,48,63,.2))}
@@ -142,7 +150,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .hero__timer b{font-variant-numeric:tabular-nums}
 
 /* selos */
-.seals{background:var(--azul);color:#fff;padding:28px 0;position:relative;overflow:hidden}
+.seals{background:var(--azul);color:#fff;padding:64px 0 30px;position:relative;overflow:hidden}
 .seals .dots{background-image:radial-gradient(circle,rgba(255,255,255,.2) 1.6px,transparent 1.6px)}
 .seals__g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;position:relative}
 .seal i{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 8px;background:#fff;border-radius:50%;
@@ -152,9 +160,9 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .seal span{font-size:12.5px;opacity:.85}
 
 /* dor */
-.pain{padding:78px 0;background:var(--cream);text-align:center;position:relative;overflow:hidden}
+.pain{padding:110px 0 78px;background:var(--cream);text-align:center;position:relative;overflow:hidden}
 .pain__g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px;text-align:left;position:relative}
-.pain__g div{background:#fff;border:2px solid rgba(242,96,60,.25);border-radius:16px;padding:16px 18px 16px 42px;
+.pain__g div{background:#fff;border:3px solid rgba(242,96,60,.4);border-radius:20px;padding:16px 18px 16px 42px;
   font-size:15.5px;font-weight:600;position:relative;
   box-shadow:0 4px 0 rgba(242,96,60,.14)}
 .pain__g div::before{content:"✕";color:var(--coral);font-weight:800;position:absolute;left:18px;top:17px}
@@ -163,7 +171,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .pain__p b{color:var(--coral)}
 
 /* etapas coloridas */
-.steps{padding:78px 0}
+.steps{padding:110px 0 78px}
 .steps__g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
 .st{border-radius:20px;padding:24px 20px;color:#fff;position:relative;overflow:hidden;
   transition:transform .4s var(--ease)}
@@ -191,10 +199,13 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .hint{font-size:12.5px;font-weight:700;color:var(--soft);text-align:center;letter-spacing:.06em}
 
 /* dentro */
-.inside{padding:78px 0;background:var(--cream);position:relative;overflow:hidden}
+.inside{padding:110px 0 78px;background:var(--cream);position:relative;overflow:hidden}
 .inside__g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px;position:relative}
-.ic{background:#fff;border-radius:18px;padding:24px;border:2px solid var(--line);
-  box-shadow:0 5px 0 rgba(36,48,63,.07)}
+.ic{background:#fff;border-radius:22px;padding:24px;border:3px solid var(--line);
+  box-shadow:0 6px 0 rgba(36,48,63,.09)}
+.ic:nth-child(1){border-color:var(--azul)}.ic:nth-child(2){border-color:var(--coral)}
+.ic:nth-child(3){border-color:var(--verde)}.ic:nth-child(4){border-color:var(--roxo)}
+.ic:nth-child(5){border-color:var(--rosa)}.ic:nth-child(6){border-color:var(--amarelo)}
 .ic b{font-family:var(--fd);font-size:40px;font-weight:800;line-height:1;display:block;margin-bottom:6px}
 .ic:nth-child(1) b{color:var(--azul)}.ic:nth-child(2) b{color:var(--coral)}
 .ic:nth-child(3) b{color:var(--verde)}.ic:nth-child(4) b{color:var(--roxo)}
@@ -205,25 +216,28 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .ic--d b{color:var(--amarelo)!important}.ic--d p{color:rgba(255,255,255,.85)}
 
 /* depoimentos */
-.tst{padding:78px 0}
+.tst{padding:110px 0 78px}
 .tst__g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-.tq{background:#fff;border:2px solid var(--line);border-radius:18px;padding:24px;display:flex;
+.tq{background:#fff;border:3px solid var(--line);border-radius:22px;padding:24px;display:flex;
   flex-direction:column;gap:12px;box-shadow:0 5px 0 rgba(36,48,63,.07)}
 .tq div{color:var(--amarelo);font-size:15px;letter-spacing:.08em}
 .tq blockquote{margin:0;font-size:16px;line-height:1.5;font-weight:600}
+.tq:nth-child(1){border-color:var(--azul)}.tq:nth-child(2){border-color:var(--verde)}.tq:nth-child(3){border-color:var(--coral)}
 .tq cite{font-style:normal;font-size:12.5px;font-weight:700;color:var(--soft);margin-top:auto}
 .note{font-size:12px;color:var(--soft);opacity:.8;text-align:center;margin-top:16px}
 
 /* ofertas */
 .offer{padding:78px 0;background:linear-gradient(180deg,#EEF3FF,#FFFDF7);position:relative;overflow:hidden}
 .plans{display:grid;grid-template-columns:1fr 1.08fr;gap:20px;margin-top:44px;align-items:start;position:relative}
-.plan{background:#fff;border:3px solid var(--line);border-radius:24px;padding:30px;position:relative;
+.plan{background:#fff;border:3px solid var(--azul);border-radius:24px;padding:30px;position:relative;overflow:visible;
   box-shadow:0 10px 0 rgba(36,48,63,.08)}
 .plan--hot{border-color:var(--verde);box-shadow:0 10px 0 rgba(31,164,99,.3)}
 .plan__tag{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--verde);color:#fff;
   font-family:var(--fd);font-weight:700;font-size:13px;padding:6px 18px;border-radius:999px;white-space:nowrap;
   box-shadow:0 4px 0 #14804C}
-.plan h3{text-align:center;font-size:24px}
+.plan h3{text-align:center;font-size:24px;color:#fff;background:var(--azul);margin:-30px -30px 14px;padding:18px 20px 14px;
+  border-radius:20px 20px 0 0}
+.plan--hot h3{background:var(--verde);padding-top:26px}
 .plan__s{text-align:center;color:var(--soft);font-size:14px;margin:6px 0 18px;font-weight:600}
 .plan__p{text-align:center;margin-bottom:8px}
 .plan__p s{font-size:15px;color:var(--soft);font-weight:600;opacity:.75}
@@ -242,9 +256,10 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 /* complementos */
 .extras{padding:70px 0;background:var(--paper)}
 .extras__g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-.ex{background:#fff;border:2px solid var(--line);border-radius:18px;overflow:hidden;
+.ex{background:#fff;border:3px solid var(--line);border-radius:22px;overflow:hidden;
   box-shadow:0 5px 0 rgba(36,48,63,.07);transition:transform .4s var(--ease)}
 .ex:hover{transform:translateY(-5px)}
+.ex:nth-child(1){border-color:var(--coral)}.ex:nth-child(2){border-color:var(--roxo)}.ex:nth-child(3){border-color:var(--amarelo)}
 .ex img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top}
 .ex__b{padding:18px}
 .ex__b h3{font-size:18px;margin-bottom:5px}
@@ -259,9 +274,9 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .guar p{margin:0;font-size:14.5px;color:var(--soft)}
 
 /* faq */
-.faq{padding:78px 0;background:var(--cream)}
+.faq{padding:110px 0 78px;background:var(--cream)}
 .faq__l{margin-top:32px}
-.fq{background:#fff;border:2px solid var(--line);border-radius:16px;margin-bottom:11px;overflow:hidden}
+.fq{background:#fff;border:3px solid rgba(58,102,219,.22);border-radius:18px;margin-bottom:11px;overflow:hidden}
 .fq__q{width:100%;background:none;border:0;text-align:left;padding:18px 48px 18px 20px;cursor:pointer;
   font-family:var(--fd);font-size:17px;font-weight:700;position:relative;line-height:1.3}
 .fq__q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
@@ -271,14 +286,14 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .fq__a p{margin:0 20px 18px;color:var(--soft);font-size:15px}
 
 /* final */
-.final{padding:84px 0;text-align:center;background:var(--azul);color:#fff;position:relative;overflow:hidden}
+.final{padding:116px 0 84px;text-align:center;background:var(--azul);color:#fff;position:relative;overflow:hidden}
 .final .dots{background-image:radial-gradient(circle,rgba(255,255,255,.2) 1.6px,transparent 1.6px)}
 .final h2{color:#fff;max-width:18ch;margin:14px auto 14px;position:relative}
 .final p{color:rgba(255,255,255,.9);max-width:48ch;margin:0 auto 28px;position:relative;font-weight:600}
 .final .eyebrow{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4);color:#fff}
 .fig--f1{width:72px;left:7%;top:60px;animation-delay:-2s}
-.fig--f2{width:54px;left:16%;bottom:70px;animation-delay:-4s;animation-duration:8s}
-.fig--f3{width:64px;right:8%;top:80px;animation-delay:-1s;animation-duration:7s}
+.fig--f2{width:54px;left:16%;bottom:70px;animation-delay:-4s;animation-duration:12s}
+.fig--f3{width:64px;right:8%;top:80px;animation-delay:-1s;animation-duration:11s}
 .fig--f4{width:60px;right:15%;bottom:60px;animation-delay:-3s}
 .final__m{font-size:13px;color:rgba(255,255,255,.75);margin-top:16px;position:relative;font-weight:600}
 
@@ -316,6 +331,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
   .fig--1{width:56px;left:4%;top:104px}.fig--2{width:48px;right:5%;top:112px}
   .steps__g{grid-template-columns:1fr}
   .plan{padding:24px 20px}
+  .plan h3{margin:-24px -20px 14px}
   .nav .btn{display:none}
   .top__in{font-size:11.5px}
   .checks span{font-size:13px;padding:7px 13px}
@@ -391,6 +407,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="seals">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFFDF7"/></svg>
   <div class="dots" aria-hidden="true"></div>
   <div class="wrap seals__g">
     <div class="seal r"><i><img src="img/fig/estrela.svg" alt="" width="44" height="44"></i><b>Acesso imediato</b><span>chega no e-mail em segundos</span></div>
@@ -401,10 +418,11 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="pain">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#3A66DB"/></svg>
   <div class="dots" aria-hidden="true"></div>
   <div class="wrap">
     <span class="eyebrow r">O problema real</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">Você reconhece isso?</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">Você reconhece isso?</h2>
     <div class="pain__g narrow">
       <div class="r">A escola manda ler em casa, mas ninguém te ensinou <em>como</em>.</div>
       <div class="r" data-d="1">Ele olha a palavra, chuta qualquer coisa e desiste.</div>
@@ -418,9 +436,10 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="steps">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFF4DF"/></svg>
   <div class="wrap center">
     <span class="eyebrow r">Como funciona</span>
-    <h2 class="r" data-d="1" style="margin:14px 0 10px">Do som da sílaba ao texto inteiro</h2>
+    <h2 class="r sw" data-d="1" style="margin:14px 0 10px">Do som da sílaba ao texto inteiro</h2>
     <p class="lead r" data-d="2" style="max-width:56ch;margin:0 auto">Cada etapa só começa quando a anterior está firme. É isso que material solto nunca faz.</p>
     <div class="steps__g" style="text-align:left">
       <div class="st r"><img class="st__f" src="img/fig/estrela.svg" alt="" width="54" height="54"><div class="st__n">01</div><h3>A sílaba</h3><p>15 famílias simples e 10 páginas de complexas: CH, LH, NH, RR, QU, Ç, X, BR, TR e mais.</p></div>
@@ -434,7 +453,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 <section class="gal">
   <div class="wrap center">
     <span class="eyebrow r">Veja por dentro</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">Páginas reais, do jeito que saem da impressora</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">Páginas reais, do jeito que saem da impressora</h2>
   </div>
   <div class="gal__track" id="gal">
     <figure class="gcard r"><img src="img/previa-familia.png" alt="Ficha de família silábica" width="794" height="1123" loading="lazy"><span>Família silábica</span></figure>
@@ -450,10 +469,11 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="inside">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFFDF7"/></svg>
   <div class="dots" aria-hidden="true"></div>
   <div class="wrap center">
     <span class="eyebrow r">O que vem dentro</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">50 páginas. Imprime hoje, usa hoje.</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">50 páginas. Imprime hoje, usa hoje.</h2>
     <div class="inside__g" style="text-align:left">
       <div class="ic r"><b>15</b><h3>Famílias silábicas</h3><p>B, C, D, F, G, J, L, M, N, P, R, S, T, V e Z — sílaba grande, palavra com desenho e espaço para escrever.</p></div>
       <div class="ic r" data-d="1"><b>10</b><h3>Sílabas complexas</h3><p>CH, LH, NH, RR, SS, QU, GU, Ç, X e os encontros BR, TR, PR, GR, FL, PL. Onde a maioria trava.</p></div>
@@ -467,9 +487,10 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="tst">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFF4DF"/></svg>
   <div class="wrap center">
     <span class="eyebrow r">Quem já usou</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">Em duas semanas dá pra ver a diferença</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">Em duas semanas dá pra ver a diferença</h2>
     <div class="tst__g" style="text-align:left">
       <figure class="tq r"><div>★★★★★</div><blockquote>"Meu filho de 6 anos travava em toda palavra. Com as fichas de sílaba ele começou a juntar sozinho. Hoje lê as frases do kit sem ajuda."</blockquote><cite>mãe do Theo, 6 anos</cite></figure>
       <figure class="tq r" data-d="1"><div>★★★★★</div><blockquote>"Uso com meus alunos do 1º ano como tarefa de casa. As caixinhas de marcar viraram competição saudável na sala."</blockquote><cite>Prof. Camila · 1º ano</cite></figure>
@@ -482,7 +503,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 <section class="offer" id="ofertas">
   <div class="wrap center">
     <span class="eyebrow r">Escolha o seu</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">Só o kit, ou o combo completo</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">Só o kit, ou o combo completo</h2>
     <p class="lead r" data-d="2" style="max-width:52ch;margin:10px auto 0">Os dois com acesso imediato e garantia de 7 dias.</p>
     <div class="plans">
       <div class="plan r" style="text-align:left">
@@ -532,7 +553,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 <section class="extras">
   <div class="wrap center">
     <span class="eyebrow r">Os 3 complementos</span>
-    <h2 class="r" data-d="1" style="margin-top:14px">O que vem junto no combo</h2>
+    <h2 class="r sw" data-d="1" style="margin-top:14px">O que vem junto no combo</h2>
     <div class="extras__g" style="text-align:left">
       <div class="ex r">
         <img src="img/bump-caligrafia.png" alt="Caderno de Caligrafia" width="600" height="900" loading="lazy">
@@ -552,10 +573,11 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="faq">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFFDF7"/></svg>
   <div class="wrap narrow">
     <div class="center">
       <span class="eyebrow r">Antes de comprar</span>
-      <h2 class="r" data-d="1" style="margin-top:14px">Perguntas que toda mãe faz</h2>
+      <h2 class="r sw" data-d="1" style="margin-top:14px">Perguntas que toda mãe faz</h2>
     </div>
     <div class="faq__l" id="faq">
       <div class="fq"><button class="fq__q">Como eu recebo o material?</button><div class="fq__a"><p>Assim que o pagamento é aprovado você recebe no e-mail o acesso à área de membros, onde baixa os PDFs. No Pix costuma levar menos de um minuto.</p></div></div>
@@ -570,6 +592,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
 </section>
 
 <section class="final">
+  <svg class="wv" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v22c-120 26-240 34-360 22s-240-34-360-22-240 34-360 22S120 22 0 44z" fill="#FFF4DF"/></svg>
   <div class="dots" aria-hidden="true"></div>
   <div class="fig fig--f1" aria-hidden="true"><img src="img/fig/lua.svg" alt="" width="72" height="72"></div>
   <div class="fig fig--f2" aria-hidden="true"><img src="img/fig/estrela.svg" alt="" width="54" height="54"></div>
@@ -577,7 +600,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
   <div class="fig fig--f4" aria-hidden="true"><img src="img/fig/sapo.svg" alt="" width="60" height="60"></div>
   <div class="wrap">
     <span class="eyebrow r">Última coisa</span>
-    <h2 class="r" data-d="1">Hoje à noite pode ser a primeira página lida sozinho</h2>
+    <h2 class="r sw" data-d="1">Hoje à noite pode ser a primeira página lida sozinho</h2>
     <p class="r" data-d="2">Ou pode ser mais um mês de "não quero ler". A diferença custa menos que uma pizza e uma folha de papel.</p>
     <a href="#ofertas" class="btn btn--lg r" data-d="3">Começar por R$ 19,90</a>
     <div class="final__m r" data-d="4">de R$ 47 · acesso imediato · garantia de 7 dias</div>
