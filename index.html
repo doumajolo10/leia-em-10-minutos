@@ -282,8 +282,11 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 .fq__q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
   color:var(--azul);font-size:26px;font-weight:800;transition:transform .35s var(--ease)}
 .fq.is-open .fq__q::after{transform:translateY(-50%) rotate(45deg)}
-.fq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
-.fq__a p{margin:0 20px 18px;color:var(--soft);font-size:15px}
+.fq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.fq__a>*{overflow:hidden;min-height:0}
+.fq.is-open .fq__a{grid-template-rows:1fr}
+.fq__a p{margin:0;padding:0 20px;color:var(--soft);font-size:15px}
+.fq__a p::after{content:"";display:block;height:18px}
 
 /* final */
 .final{padding:116px 0 84px;text-align:center;background:var(--azul);color:#fff;position:relative;overflow:hidden}
@@ -703,9 +706,9 @@ var MINUTOS_DA_OFERTA = 15;
     b.addEventListener("click", function(){
       var it = b.parentElement, pn = it.querySelector(".fq__a"), aberto = it.classList.contains("is-open");
       document.querySelectorAll(".fq.is-open").forEach(function(o){
-        o.classList.remove("is-open"); o.querySelector(".fq__a").style.maxHeight = null;
+        o.classList.remove("is-open");
       });
-      if(!aberto){ it.classList.add("is-open"); pn.style.maxHeight = pn.scrollHeight + "px"; }
+      if(!aberto) it.classList.add("is-open");
     });
   });
 
