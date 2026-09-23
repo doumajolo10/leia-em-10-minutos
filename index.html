@@ -351,6 +351,14 @@ var TIKTOK_PIXEL = "DAQ49UJC77U1JKBFUR2G";
 ttq.track("ViewContent",{content_name:"Kit Leia em 10 Minutos",value:19.90,currency:"BRL"});
 </script>
 <!-- /TikTok Pixel -->
+<!-- Google tag (Google Ads AW-18470251762) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18470251762"></script>
+<script>
+var GOOGLE_TAG = "AW-18470251762";
+window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); }
+gtag("js", new Date()); gtag("config", GOOGLE_TAG);
+</script>
+<!-- /Google tag -->
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -652,6 +660,7 @@ var MINUTOS_DA_OFERTA = 15;
     var u = combo ? CHECKOUT_COMBO : CHECKOUT_KIT;
     if(u){ a.href = u + passa; a.target = "_blank"; a.rel = "noopener"; }
     a.addEventListener("click", function(){
+      if(window.gtag) gtag("event", "begin_checkout", { value: combo ? 37.90 : 19.90, currency: "BRL", items: [{ item_name: combo ? "Combo Completo" : "Kit Leia em 10 Minutos" }] });
       if(window.ttq) ttq.track("InitiateCheckout", {
         value: combo ? 37.90 : 19.90,
         currency: "BRL",
