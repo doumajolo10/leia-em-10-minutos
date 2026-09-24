@@ -658,8 +658,10 @@ var MINUTOS_DA_OFERTA = 15;
   document.querySelectorAll("[data-checkout]").forEach(function(a){
     var combo = a.dataset.checkout === "combo";
     var u = combo ? CHECKOUT_COMBO : CHECKOUT_KIT;
-    if(u){ a.href = u + passa; a.target = "_blank"; a.rel = "noopener"; }
-    a.addEventListener("click", function(){
+    /* mesma aba: o navegador interno do TikTok/Instagram costuma ignorar links de nova aba */
+    if(u){ a.href = u + passa; }
+    a.addEventListener("click", function(e){
+      if(u){ e.preventDefault(); setTimeout(function(){ location.href = u + passa; }, 350); }
       if(window.gtag) gtag("event", "begin_checkout", { value: combo ? 37.90 : 19.90, currency: "BRL", items: [{ item_name: combo ? "Combo Completo" : "Kit Leia em 10 Minutos" }] });
       if(window.ttq) ttq.track("InitiateCheckout", {
         value: combo ? 37.90 : 19.90,
