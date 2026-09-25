@@ -9,6 +9,8 @@
 <meta property="og:title" content="Seu filho lendo sozinho em 10 minutos por dia">
 <meta property="og:description" content="Kit de leitura para imprimir: 50 páginas na ordem certa, com plano de 30 dias. De R$ 47 por R$ 19,90.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://leia-em-10-minutos.vercel.app/img/og.png">
+<link rel="icon" href="img/fig/estrela.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -65,7 +67,7 @@ section{position:relative}
 .top__c{font-variant-numeric:tabular-nums;letter-spacing:.02em}
 
 /* nav */
-.nav{position:fixed;top:40px;left:0;right:0;z-index:50;padding:11px 0;transition:all .4s var(--ease);
+.nav{position:fixed;top:37px;left:0;right:0;z-index:50;padding:11px 0;transition:all .4s var(--ease);
   border-bottom:2px solid transparent}
 .nav.is-stuck{background:rgba(255,253,247,.94);backdrop-filter:blur(12px);border-bottom-color:rgba(36,48,63,.08)}
 .nav__in{display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -325,7 +327,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:700}
 @media(max-width:640px){
   body{font-size:16px}
   .hero{padding:100px 0 38px}
-  .nav{top:44px}
+  .nav{top:35px} /* colado na faixa de preço (36px); com 44px sobrava um vão onde o texto aparecia rolando */
   .bar{display:flex}
   .btn--lg{width:100%;padding:18px 22px;font-size:18px}
   .hero__cta{width:100%}
@@ -405,7 +407,7 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
     <h1 class="r is-in" data-d="1">Seu filho lendo <span class="hl">sozinho</span> em 10 minutos por dia</h1>
 
     <div class="hero__mock r is-in" data-d="2">
-      <img src="img/mockup-kit.png" alt="Páginas do kit Leia em 10 Minutos espalhadas em leque" width="1300" height="700" fetchpriority="high">
+      <img src="img/mockup-kit.webp" srcset="img/mockup-kit.webp 1300w, img/mockup-kit-2x.webp 2600w" sizes="(max-width: 640px) 80vw, 900px" alt="Páginas do kit Leia em 10 Minutos espalhadas em leque" width="1300" height="700" fetchpriority="high">
     </div>
 
     <p class="lead hero__sub r is-in" data-d="3">São <b>50 páginas na ordem exata em que a criança aprende a ler</b> — da sílaba solta ao texto inteiro — com um plano de 30 dias dizendo o que fazer em cada dia. Você imprime hoje e usa hoje. Sem app, sem tela, sem briga.</p>
@@ -474,14 +476,14 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
     <h2 class="r sw" data-d="1" style="margin-top:14px">Páginas reais, do jeito que saem da impressora</h2>
   </div>
   <div class="gal__track" id="gal">
-    <figure class="gcard r"><img src="img/previa-familia.png" alt="Ficha de família silábica" width="794" height="1123" loading="lazy"><span>Família silábica</span></figure>
-    <figure class="gcard r" data-d="1"><img src="img/previa-palavras.png" alt="Ficha de palavras" width="794" height="1123" loading="lazy"><span>Ficha de palavras</span></figure>
-    <figure class="gcard r" data-d="2"><img src="img/previa-complexas.png" alt="Sílabas com LH" width="794" height="1123" loading="lazy"><span>Sílabas complexas</span></figure>
-    <figure class="gcard r" data-d="3"><img src="img/previa-texto.png" alt="Texto com perguntas" width="794" height="1123" loading="lazy"><span>Texto com perguntas</span></figure>
-    <figure class="gcard r" data-d="4"><img src="img/previa-brincadeira.png" alt="Ligue ao desenho" width="794" height="1123" loading="lazy"><span>Brincadeiras</span></figure>
-    <figure class="gcard r" data-d="5"><img src="img/previa-plano.png" alt="Plano de 30 dias" width="794" height="1123" loading="lazy"><span>Plano de 30 dias</span></figure>
-    <figure class="gcard r" data-d="5"><img src="img/previa-professora.png" alt="Página para a professora" width="794" height="1123" loading="lazy"><span>Para a professora</span></figure>
-    <figure class="gcard r" data-d="5"><img src="img/previa-certificado.png" alt="Certificado de leitor" width="794" height="1123" loading="lazy"><span>Certificado</span></figure>
+    <figure class="gcard r"><img src="img/previa-familia.webp" alt="Ficha de família silábica" width="1100" height="1556" loading="lazy"><span>Família silábica</span></figure>
+    <figure class="gcard r" data-d="1"><img src="img/previa-palavras.webp" alt="Ficha de palavras" width="1100" height="1556" loading="lazy"><span>Ficha de palavras</span></figure>
+    <figure class="gcard r" data-d="2"><img src="img/previa-complexas.webp" alt="Sílabas com LH" width="1100" height="1556" loading="lazy"><span>Sílabas complexas</span></figure>
+    <figure class="gcard r" data-d="3"><img src="img/previa-texto.webp" alt="Texto com perguntas" width="1100" height="1556" loading="lazy"><span>Texto com perguntas</span></figure>
+    <figure class="gcard r" data-d="4"><img src="img/previa-brincadeira.webp" alt="Ligue ao desenho" width="1100" height="1556" loading="lazy"><span>Brincadeiras</span></figure>
+    <figure class="gcard r" data-d="5"><img src="img/previa-plano.webp" alt="Plano de 30 dias" width="1100" height="1556" loading="lazy"><span>Plano de 30 dias</span></figure>
+    <figure class="gcard r" data-d="5"><img src="img/previa-professora.webp" alt="Página para a professora" width="1100" height="1556" loading="lazy"><span>Para a professora</span></figure>
+    <figure class="gcard r" data-d="5"><img src="img/previa-certificado.webp" alt="Certificado de leitor" width="1100" height="1556" loading="lazy"><span>Certificado</span></figure>
   </div>
   <div class="wrap"><div class="hint">← arraste para ver mais →</div></div>
 </section>
@@ -574,15 +576,15 @@ src="https://www.facebook.com/tr?id=1107457028532296&ev=PageView&noscript=1"></n
     <h2 class="r sw" data-d="1" style="margin-top:14px">O que vem junto no combo</h2>
     <div class="extras__g" style="text-align:left">
       <div class="ex r">
-        <img src="img/bump-caligrafia.png" alt="Caderno de Caligrafia" width="600" height="900" loading="lazy">
+        <img src="img/bump-caligrafia.webp" alt="Caderno de Caligrafia" width="900" height="1350" loading="lazy">
         <div class="ex__b"><h3>Caderno de Caligrafia</h3><p>16 páginas para cobrir e escrever as letras, palavras e frases do kit. Fixa a leitura pela mão.</p><div class="ex__p">R$ 9 avulso</div></div>
       </div>
       <div class="ex r" data-d="1">
-        <img src="img/bump-cartazes.png" alt="Cartazes de Sílabas" width="600" height="900" loading="lazy">
+        <img src="img/bump-cartazes.webp" alt="Cartazes de Sílabas" width="900" height="1350" loading="lazy">
         <div class="ex__b"><h3>25 Cartazes de Sílabas</h3><p>Vogais, alfabeto e todas as famílias em A4 para pendurar. A criança vê todo dia e fixa.</p><div class="ex__p">R$ 12 avulso</div></div>
       </div>
       <div class="ex r" data-d="2">
-        <img src="img/bump-jogo.png" alt="Memória e Bingo das Sílabas" width="600" height="900" loading="lazy">
+        <img src="img/bump-jogo.webp" alt="Memória e Bingo das Sílabas" width="900" height="1350" loading="lazy">
         <div class="ex__b"><h3>Memória e Bingo</h3><p>48 cartas, 75 sílabas e 6 cartelas para recortar. Três jogos para treinar sem parecer tarefa.</p><div class="ex__p">R$ 9 avulso</div></div>
       </div>
     </div>
