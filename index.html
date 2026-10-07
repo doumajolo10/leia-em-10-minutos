@@ -492,7 +492,10 @@ var FIM_BRINDE = ""; /* data real do fim do brinde de colorir, formato "2026-10-
       e.preventDefault(); setTimeout(function(){ location.href = c.url + passa; }, 350);
       if(window.gtag) gtag("event", "begin_checkout", { value: c.valor, currency: "BRL", items: [{ item_name: c.nome }] });
       if(window.ttq) ttq.track("InitiateCheckout", { value: c.valor, currency: "BRL", content_name: c.nome });
-      if(typeof fbq === "function") fbq("track", "InitiateCheckout", { value: c.valor, currency: "BRL", content_name: c.nome });
+      /* Meta: o InitiateCheckout dispara no checkout da Cakto, onde o MESMO pixel esta
+         instalado (conferido no Gerenciador de Eventos: pay.cakto.com.br manda PageView,
+         Iniciar finalizacao da compra, Compra e pix). Disparar aqui tambem contava o
+         evento duas vezes por pessoa e fazia o custo por resultado aparecer pela metade. */
     });
   });
   /* brinde: com prazo, mostra a data; passado o prazo, some da página */
