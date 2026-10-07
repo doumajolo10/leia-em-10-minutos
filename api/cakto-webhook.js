@@ -17,7 +17,7 @@ import crypto from 'node:crypto';
 
 export const config = { api: { bodyParser: false } };
 
-const PIXEL_ID = '1107457028532296';
+const PIXEL_ID = '1150184887681441';
 const GRAPH = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
 const TOLERANCIA_SEG = 5 * 60;
 
